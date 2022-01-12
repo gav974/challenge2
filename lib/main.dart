@@ -5,8 +5,24 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+var touchOfSound;
+
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  static AudioCache player = AudioCache(prefix: 'assets/');
+
+
+  void soundOfTouch() {
+    setState(() {
+      player.play('note$touchOfSound.wav');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,80 +30,101 @@ class MyApp extends StatelessWidget {
       title: 'hello',
       debugShowCheckedModeBanner: false,
       home: SafeArea(
-        child: sectionFlag,
+          child: Column(
+              children: [
+          Expanded(
+          child: TextButton(
+          onPressed: () {
+      touchOfSound = 1 ;
+      soundOfTouch();
+      },
+          child: Container(
+            height: 100,
+            color: Colors.red,
+          )
+
       ),
+    ),
+
+         Expanded(
+           child: TextButton(
+                onPressed:(){
+                touchOfSound = 2 ;
+                 soundOfTouch();} ,
+               child: Container(
+                    height: 100,
+                    color: Colors.orangeAccent,
+    ),
+    ),
+    ),
+
+        Expanded(
+          child:TextButton(
+              onPressed:(){
+              touchOfSound = 3 ;
+            soundOfTouch();} ,
+            child: Container(
+                  height: 100,
+            color: Colors.yellow,
+    ),
+    ),
+    ),
+
+    Expanded(
+    child: TextButton(
+      onPressed:(){
+        touchOfSound = 4 ;
+    soundOfTouch();} ,
+      child: Container(
+      height: 100,
+
+      color: Colors.green,
+      ),
+    ),
+    ),
+
+    Expanded(
+    child: TextButton(
+      onPressed: (){touchOfSound = 5 ;
+    soundOfTouch();} ,
+      child: Container(
+      height: 100,
+        color: Colors.lightGreen[900],
+      ),
+    ),
+    ),
+
+    Expanded(
+    child: TextButton(
+      onPressed:(){
+        touchOfSound = 6 ;
+      soundOfTouch();} ,
+      child: Container(
+      height: 100,
+      color: Colors.blueAccent,
+   
+      ),
+    ),
+    ),
+
+    Expanded(
+    child: TextButton(
+      onPressed: (){
+        touchOfSound = 7 ;
+        soundOfTouch();} ,
+      child: Container(
+      height: 100,
+      color: Colors.purple,
+      ),
+    ),
+    ),
+
+    ],
+    ),
+
+    ),
     );
   }
 }
 
-Widget sectionFlag = Container(
-    child: Column(
-  children: [
-    Expanded(
-      child: Container(
-        height: 100,
-        width: 400,
-        color: Colors.red,
-        //child: TextButton(
-        // onPressed: () => audioCache.play('assets/assets/note1.wav'),
-        //  child: Text(' ')
-       // ),
-      ),
-    ),
-    Expanded(
-      child: Container(
-        height: 100,
-        width: 400,
-        color: Colors.orangeAccent,
-       // child: TextButton(
-       //  onPressed: onPressed,
-       //     child: Text('image1')),
-      ),
-    ),
-    Container(
-      height: 100,
-      width: 400,
-      color: Colors.yellow,
-      //child: TextButton(
-      // onPressed: onPressed,
-      //  child: chil),
-    ),
-    Container(
-      height: 100,
-      width: 400,
-      color: Colors.green,
-      //child: TextButton(
-      // onPressed: onPressed,
-      //  child: chil),
-    ),
-    Container(
-      height: 100,
-      width: 400,
-      color: Colors.lightGreen[900],
-      //child: TextButton(
-      // onPressed: onPressed,
-      //  child: chil),
-    ),
-    Container(
-      height: 100,
-      width: 400,
-      color: Colors.blueAccent,
-      //child: TextButton(
-      // onPressed: onPressed,
-      //  child: chil),
-    ),
-    Container(
-      height: 100,
-      width: 400,
-      color: Colors.purple,
-      //child: TextButton(
-      // onPressed: onPressed,
-      //  child: chil),
-    ),
-    Column(
-      children: [
 
-      ],
-    )
-  ],
-));
